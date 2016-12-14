@@ -88,16 +88,6 @@ class App extends Component {
       .attr('height', height)
       .attr('id', 'updatedD3Element');
 
-    const link = svg.append('g')
-      .attr('class', 'links')
-      .selectAll('line')
-      .data(this.state.links)
-      .enter()
-      .append('line')
-      .style('stroke', '#999')
-      .style('stroke-opacity', 0.6)
-      .style('stroke-width', 1.5);
-
     const color = d3.scale.category20();
 
     const node = svg.append('g')
@@ -126,12 +116,6 @@ class App extends Component {
         return d.artist + ' nominated for:  ' + d.category + ' for the feature: ' + d.feature; });
 
     force.on('tick', () => {
-      link
-        .attr('x1', (d) => d.source.x)
-        .attr('x2', (d) => d.source.y)
-        .attr('y1', (d) => d.source.x)
-        .attr('y2', (d) => d.source.y)
-
       node
         .attr('cx', (d) => d.x)
         .attr('cy', (d) => d.y)
@@ -161,16 +145,6 @@ class App extends Component {
       .attr('height', height)
       .attr('id', 'initialD3Element');
 
-    const link = svg.append('g')
-      .attr('class', 'links')
-      .selectAll('line')
-      .data(this.state.links)
-      .enter()
-      .append('line')
-      .style('stroke', '#999')
-      .style('stroke-opacity', 0.6)
-      .style('stroke-width', 1.5);
-
     const color = d3.scale.category20();
 
     const node = svg.append('g')
@@ -199,12 +173,6 @@ class App extends Component {
         return d.artist; });
 
     force.on('tick', () => {
-      link
-        .attr('x1', (d) => d.source.x)
-        .attr('x2', (d) => d.source.y)
-        .attr('y1', (d) => d.source.x)
-        .attr('y2', (d) => d.source.y)
-
       node
         .attr('cx', (d) => d.x)
         .attr('cy', (d) => d.y)
